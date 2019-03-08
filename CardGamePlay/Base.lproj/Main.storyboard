@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NW8-q7-riH">
-                                <rect key="frame" x="23" y="498" width="66" height="51"/>
+                                <rect key="frame" x="23" y="506" width="53" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="higher"/>
                                 <connections>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4Y-mu-HJH">
-                                <rect key="frame" x="276" y="498" width="65" height="51"/>
+                                <rect key="frame" x="296" y="506" width="57" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="lower"/>
                                 <connections>
@@ -73,6 +73,8 @@
                         <outlet property="cardImageView" destination="QRf-Pg-DbT" id="IUh-m9-2ts"/>
                         <outlet property="guessTextField" destination="LCd-Uh-fb6" id="VAV-2v-BwE"/>
                         <outlet property="labelPoints" destination="ifu-U2-ber" id="33M-vj-HH8"/>
+                        <outlet property="outletHigherbutton" destination="NW8-q7-riH" id="Kmr-DP-O5w"/>
+                        <outlet property="outletLowerButton" destination="D4Y-mu-HJH" id="EIA-0X-gcp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

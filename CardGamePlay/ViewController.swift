@@ -28,7 +28,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var guessTextField: UITextField!
     
-
+    @IBOutlet weak var outletHigherbutton: UIButton!
+    
+    @IBOutlet weak var outletLowerButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -55,6 +59,7 @@ class ViewController: UIViewController {
         flipCardChange()
         flipCardRightHigher()
         countPoints()
+        
     }
     
     
@@ -62,12 +67,14 @@ class ViewController: UIViewController {
 
     @IBAction func flipCardButoon(_ sender: UIButton) {
         
-        flipCardChange()
-        buttonFlipcardTop()
-         playSound("Swish")
-        bordershadow()
-        userGuess()
         
+        buttonFlipcardTop()
+        flipCardChange()
+       
+      showQuestionImage()
+        countPoints()
+         playSound("Swish")
+        userGuess()
     }
     
     func flipCardChange(){
@@ -145,6 +152,14 @@ class ViewController: UIViewController {
         cardImageView.layer.shadowOpacity = 1
         cardImageView.layer.shadowRadius = 20
         
+        outletHigherbutton.layer.borderWidth = 1
+        outletHigherbutton.layer.cornerRadius = 20.0
+        outletHigherbutton.layer.masksToBounds = true
+ outletHigherbutton.layer.shadowRadius = 20
+        
+        outletLowerButton.layer.borderWidth = 1
+        outletLowerButton.layer.cornerRadius = 20.0
+        outletLowerButton.layer.masksToBounds = true
     }
     
     //function who flip the card from left when the user cliks on lower button
@@ -192,7 +207,7 @@ class ViewController: UIViewController {
         
         print("Du gissa \(userguess)")
         
-        if cardIndex == userguess
+        if userguess == cardIndex
         {
             
             
