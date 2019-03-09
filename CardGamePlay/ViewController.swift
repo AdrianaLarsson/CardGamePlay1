@@ -11,7 +11,21 @@ import AVFoundation
 
 var audioPlayer : AVAudioPlayer!
 
-let cardArray = ["questionmark.png","2heart.png","3heart.png","4heart.png","5heart.png","6heart.png","7heart.png","8heart.png","9heart.png","10heart.png"]
+
+var cardArray: [UIImage?] = [
+    UIImage(named: "questionmark.png"),
+    UIImage(named: "2heart.png"),
+    UIImage(named: "3heart.png"),
+    UIImage(named: "4heart.png"),
+    UIImage(named: "5heart.png"),
+    UIImage(named: "6heart.png"),
+    UIImage(named: "7heart.png"),
+    UIImage(named: "8heart.png"),
+    UIImage(named: "9heart.png"),
+    UIImage(named: "10heart.png"),
+]
+
+//let cardArray = ["questionmark.png","2heart.png","3heart.png","4heart.png","5heart.png","6heart.png","7heart.png","8heart.png","9heart.png","10heart.png"]
 
  var cardIndex = 0
 
@@ -32,6 +46,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var outletLowerButton: UIButton!
     
+    @IBOutlet weak var outletButtonFlipCard: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     
-    //this function radomize the images fom the array, card images who shows in the ImageView
+  
 
     @IBAction func flipCardButoon(_ sender: UIButton) {
         
@@ -76,14 +91,18 @@ class ViewController: UIViewController {
          playSound("Swish")
         userGuess()
     }
+      //this function radomize the images fom the array, card images who shows in the ImageView
     
     func flipCardChange(){
         
         
         cardIndex = Int.random(in: 0 ... 9)
         
+        outletButtonFlipCard.setImage(cardArray[cardIndex], for: .normal)
         
-        cardImageView.image = UIImage(named: cardArray[cardIndex])
+        
+        //cardIndex = Int.random(in: 0 ... 9)
+        //cardImageView.image = UIImage(named: cardArray[cardIndex])
         
     }
     
@@ -92,11 +111,14 @@ class ViewController: UIViewController {
         
         if cardIndex == 8
         {
+            
+                outletButtonFlipCard.setImage(cardArray[0], for: .normal)
+            
             //  cardViewOutlet.setImage(#imageLiteral(resourceName: "questionmark"), for: .normal)
             
             
             
-            cardImageView.image = UIImage(named: cardArray[0])
+            //cardImageView.image = UIImage(named: cardArray[0])
             
             
             
@@ -111,11 +133,11 @@ class ViewController: UIViewController {
     func buttonFlipcardTop()
     {
         UIView.animate(withDuration: 6.9) {
-            self.cardImageView.transform = CGAffineTransform(rotationAngle: 110)
+            self.outletButtonFlipCard.transform = CGAffineTransform(rotationAngle: 110)
             
         }
         
-        UIView.transition(with: cardImageView, duration: 0.8, options: .transitionFlipFromTop, animations: nil, completion: nil)
+        UIView.transition(with: outletButtonFlipCard, duration: 0.8, options: .transitionFlipFromTop, animations: nil, completion: nil)
         
     }
     
@@ -142,36 +164,37 @@ class ViewController: UIViewController {
         
         
         
-        cardImageView.layer.borderWidth = 5
-        cardImageView.layer.borderColor = UIColor(white: 0.8, alpha: 0.4).cgColor
-        cardImageView.layer.cornerRadius = 20.0
-        cardImageView.layer.masksToBounds = true
         
-        cardImageView.layer.shadowColor = UIColor.black.cgColor
-        cardImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        cardImageView.layer.shadowOpacity = 1
-        cardImageView.layer.shadowRadius = 20
+        outletButtonFlipCard.layer.borderWidth = 5
+        outletButtonFlipCard.layer.borderColor = UIColor(white: 0.8, alpha: 0.4).cgColor
+        outletButtonFlipCard.layer.cornerRadius = 20.0
+        outletButtonFlipCard.layer.masksToBounds = true
         
-        outletHigherbutton.layer.borderWidth = 1
-        outletHigherbutton.layer.cornerRadius = 20.0
-        outletHigherbutton.layer.masksToBounds = true
- outletHigherbutton.layer.shadowRadius = 20
+        outletButtonFlipCard.layer.shadowColor = UIColor.black.cgColor
+        outletButtonFlipCard.layer.shadowOffset = CGSize(width: 5, height: 5)
+        outletButtonFlipCard.layer.shadowOpacity = 1
+        outletButtonFlipCard.layer.shadowRadius = 20
         
-        outletLowerButton.layer.borderWidth = 1
-        outletLowerButton.layer.cornerRadius = 20.0
-        outletLowerButton.layer.masksToBounds = true
+    //    outletHigherbutton.layer.borderWidth = 1
+      //  outletHigherbutton.layer.cornerRadius = 20.0
+        //outletHigherbutton.layer.masksToBounds = true
+// outletHigherbutton.layer.shadowRadius = 20
+        
+  //      outletLowerButton.layer.borderWidth = 1
+    //    outletLowerButton.layer.cornerRadius = 20.0
+      //  outletLowerButton.layer.masksToBounds = true
     }
     
     //function who flip the card from left when the user cliks on lower button
     func flipCardleftLower(){
         
-        UIView.transition(with: cardImageView, duration: 0.8, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        UIView.transition(with: outletButtonFlipCard, duration: 0.8, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
     }
     //function who flip the card from rigt when the user cliks on higherbutton
     func flipCardRightHigher(){
         
-        UIView.transition(with: cardImageView, duration: 0.8, options: .transitionFlipFromRight, animations: nil, completion: nil)
+        UIView.transition(with: outletButtonFlipCard, duration: 0.8, options: .transitionFlipFromRight, animations: nil, completion: nil)
         
     }
     
@@ -211,7 +234,7 @@ class ViewController: UIViewController {
         {
             
             
-            var samenumber =  10
+            var samenumber =  11
             
             let alert = UIAlertController(title: "HÄRLIGT! Du gissa rätt", message: "Du fick \(samenumber) extra poäng", preferredStyle: .alert)
             
@@ -231,7 +254,11 @@ class ViewController: UIViewController {
             labelPoints.text = "Din poäng \(points)"
             
         }
-        
+        else
+        {
+            points -= 1
+            
+        }
         
         
     }
